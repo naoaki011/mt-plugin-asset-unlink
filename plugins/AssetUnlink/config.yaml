@@ -1,0 +1,35 @@
+name: Asset Unlink
+key: AssetUnlink
+id: AssetUnlink
+l10n_class: AssetUnlink::L10N
+version: 1.0
+author_name: naoaki.onozaki
+author_link: http://www.zelazny.mydns.jp/
+plugin_link: https://github.com/naoaki011/mt-plugin-asset-unlink
+#doc_link: http://code.zelazny.mydns.jp/trac/myproject/wiki/MtPluginsAssetUnlink
+description: <__trans phrase="AssetUnlink allows you to delete asset only system registration.">
+
+applications:
+    cms:
+        list_actions:
+            asset:
+                asset_unlink:
+                    label: Asset Unlink
+                    code: $AssetUnlink::AssetUnlink::CMS::unlink_asset
+                    order: 300
+                    condition: $AssetUnlink::AssetUnlink::CMS::is_blog_context
+#        methods:
+#            find_duplicated_assets: $AssetUnlink::AssetUnlink::CMS::find_duplicated_assets
+#        page_actions:
+#            list_asset:
+#                find_duplicated_assets:
+#                    label: Find Duplicated
+#                    dialog: find_duplicated_assets
+#                    condition: $AssetUnlink::AssetUnlink::Util::is_blog_context
+#                    order: 1000
+#            list_assets:
+#                find_duplicated_assets:
+#                    label: Find Duplicated
+#                    dialog: find_duplicated_assets
+#                    condition: $AssetUnlink::AssetUnlink::Util::is_blog_context
+#                    order: 1000
