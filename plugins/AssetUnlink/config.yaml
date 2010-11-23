@@ -2,7 +2,7 @@ name: Asset Unlink
 key: AssetUnlink
 id: AssetUnlink
 l10n_class: AssetUnlink::L10N
-version: 1.0
+version: 1.01
 author_name: naoaki.onozaki
 author_link: http://www.zelazny.mydns.jp/
 plugin_link: https://github.com/naoaki011/mt-plugin-asset-unlink

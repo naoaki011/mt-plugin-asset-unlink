@@ -3,6 +3,7 @@ package AssetUnlink::CMS;
 use strict;
 use warnings;
 use MT 5.0;
+use base qw( MT::Object );
 
 # use Data::Dumper;
 
@@ -12,9 +13,20 @@ sub unlink_asset {
     require MT::Asset;
     foreach my $id (@ids) {
         my $asset = MT::Asset->load($id);
-        $asset->file_path( $asset->file_path . '.dummy.file' );
-        $asset->save;
-        $asset->remove;
+#        $asset->remove_cached_files;
+        # remove children.
+#        my $class = ref $asset;
+#        my $iter = __PACKAGE__->load_iter({ parent => $asset->id, class => '*' });
+#        while(my $a = $iter->()) {
+#            $a->SUPER::remove;
+#        }
+        # Remove MT::ObjectAsset records
+        my $class = MT->model('objectasset');
+        my $iter = $class->load_iter({ asset_id => $asset->id });
+        while (my $o = $iter->()) {
+            $o->remove;
+        }
+        $asset->SUPER::remove;
     }
     $app->call_return( saved => 1 );
 }
