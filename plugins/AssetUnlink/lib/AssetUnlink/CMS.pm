@@ -2,7 +2,7 @@ package AssetUnlink::CMS;
 
 use strict;
 use warnings;
-use MT 5.0;
+use MT 4.0;
 use base qw( MT::Object );
 
 # use Data::Dumper;
